@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "994914909767",
+    "project_id": "fir-serverless-13a01",
+    "storage_bucket": "fir-serverless-13a01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994914909767:android:a7c73943b65f7bff9fbb62",
+        "android_client_info": {
+          "package_name": "com.example.to_do_serverless"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994914909767-nkkjfoipnm9e68odb8b62v7ponn0hjvd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrr5u-94eABoulD2jrhpf2LgKuLusHpOM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994914909767-nkkjfoipnm9e68odb8b62v7ponn0hjvd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
