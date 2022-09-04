@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:to_do_serverless/auth/screen/login_screen.dart';
 import 'package:to_do_serverless/to_do_list/screens/to_do_list_screen.dart';
 
 void main() async {
@@ -15,7 +16,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primaryColor: Colors.black,
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           ),
           scaffoldBackgroundColor: Colors.white,
           appBarTheme: const AppBarTheme(color: Colors.white, elevation: 0)),
-      home: Scaffold(body: const ToDoListScreen()),
+      home: const Scaffold(body: LoginScreen()),
     );
   }
 }

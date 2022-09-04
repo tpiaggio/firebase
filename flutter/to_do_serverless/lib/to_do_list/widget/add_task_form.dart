@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_serverless/auth/logic/firebase_auth_service.dart';
 import 'package:to_do_serverless/to_do_list/logic/firestore_service.dart';
 
 class AddTaskForm extends StatefulWidget {
@@ -97,9 +98,9 @@ class _AddTaskFormState extends State<AddTaskForm> {
 
   Future<void> addTask(BuildContext context) async {
     await FirestoreService.addTask(
-      name: _nameController.text,
-      description: _descriptionController.text,
-    );
+        name: _nameController.text,
+        description: _descriptionController.text,
+        userId: FirebaseAuthService.getCurrentUser().uid);
     Navigator.of(context).pop();
   }
 }

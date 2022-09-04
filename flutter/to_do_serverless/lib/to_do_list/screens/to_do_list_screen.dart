@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_serverless/auth/logic/firebase_auth_service.dart';
+import 'package:to_do_serverless/auth/screen/login_screen.dart';
+import 'package:to_do_serverless/auth/screen/sign_up_screen.dart';
 import 'package:to_do_serverless/to_do_list/widget/add_task_form.dart';
 import 'package:to_do_serverless/to_do_list/widget/task_card.dart';
 import 'package:to_do_serverless/to_do_list/widget/to_do_list.dart';
@@ -16,7 +19,10 @@ class ToDoListScreen extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: false,
-        actions: [_buildAddButton(context)],
+        actions: [
+          _buildAddButton(context),
+          _buildLogOutButton(context),
+        ],
       ),
       body: const ToDoList(),
     );
@@ -35,6 +41,21 @@ class ToDoListScreen extends StatelessWidget {
         builder: (context) => AddTaskForm(),
       ),
       icon: const Icon(Icons.add, color: Colors.black),
+    );
+  }
+
+  IconButton _buildLogOutButton(BuildContext context) {
+    return IconButton(
+      onPressed: () async {
+        await FirebaseAuthService.logOut();
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const LoginScreen(),
+          ),
+        );
+      },
+      icon: const Icon(Icons.logout, color: Colors.black),
     );
   }
 }

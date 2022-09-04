@@ -8,6 +8,7 @@ class FirestoreService {
   static Future<void> addTask({
     required String name,
     required String description,
+    required String userId,
   }) async {
     // await _firestore.collection('tasks').add({
     //   'name': name,
@@ -22,6 +23,7 @@ class FirestoreService {
       'name': name,
       'description': description,
       'created_at': DateTime.now().toIso8601String(),
+      'userId': userId,
     });
   }
 
@@ -47,12 +49,21 @@ class FirestoreService {
     await _firestore.collection('tasks').doc(id).delete();
   }
 
-  static Future<List<Map<String, dynamic>>> getTasks() async {
-    final tasks = await _firestore.collection('tasks').get();
+  static Future<List<Map<String, dynamic>>> getTasks(
+      {required String userId}) async {
+    final tasks = await _firestore
+        .collection('tasks')
+        .where('userId', isEqualTo: userId)
+        .get();
     return tasks.docs.map((e) => e.data()).toList();
   }
 
-  static Stream<QuerySnapshot<Map<String, dynamic>>> listenTasks() {
-    return _firestore.collection('tasks').snapshots();
+  static Stream<QuerySnapshot<Map<String, dynamic>>> listenTasks({
+    required String userId,
+  }) {
+    return _firestore
+        .collection('tasks')
+        .where('userId', isEqualTo: userId)
+        .snapshots();
   }
 }
