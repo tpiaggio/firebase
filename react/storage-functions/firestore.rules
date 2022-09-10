@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+  
+    function isOwnResource() {
+      return request.auth != null && request.auth.uid == resource.data.user_id;
+    }
+  
+    function isValidNumber(numberToValidate) {
+      return numberToValidate is number && numberToValidate >= 0;
+    }
+    
+    function isValidString(stringToValidate) {
+      return stringToValidate is string && stringToValidate.trim() != "";
+    }
+    
+    function isValidTimeEntry() {
+      return isValidNumber(request.resource.data.time_seconds) && isValidString(request.resource.data.title);
+    }
+  
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    
+    match /times/{time} {
+      allow read: if isOwnResource();
+      allow create: if request.auth.uid == request.resource.data.user_id && isValidTimeEntry();
+      allow update: if request.auth.uid == request.resource.data.user_id && isValidTimeEntry();
+      allow delete: if isOwnResource();
+    }
+    
+  }
+}
