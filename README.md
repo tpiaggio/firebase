@@ -18,3 +18,19 @@ Lesson that consisted on explaining firebase authentication & hosting.
 ### react/storage-functions
 
 Lesson that consisted on explaining Firebase Cloud Functions and Cloud Storage.
+
+### flutter/firestore
+
+Lesson that consisted on explaining firebase and the Firestore.
+
+### flutter/auth
+
+Lesson that consisted on explaining Firebase Authentication and App Distribution.
+
+### flutter/storage
+
+Lesson that consisted on explaining Firebase Cloud Storage.
+
+### flutter/functions
+
+Lesson that consisted on explaining Firebase Cloud Functions.
