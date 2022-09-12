@@ -7,11 +7,14 @@ import 'package:to_do_serverless/to_do_list/widget/task_card.dart';
 import 'package:to_do_serverless/to_do_list/widget/to_do_list.dart';
 
 class ToDoListScreen extends StatelessWidget {
-  const ToDoListScreen({Key? key}) : super(key: key);
+  ToDoListScreen({Key? key}) : super(key: key);
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         elevation: 0.5,
         title: const Text(
@@ -30,15 +33,14 @@ class ToDoListScreen extends StatelessWidget {
 
   IconButton _buildAddButton(BuildContext context) {
     return IconButton(
-      onPressed: () => showModalBottomSheet(
-        context: context,
+      onPressed: () => scaffoldKey.currentState!.showBottomSheet(
+        (context) => AddTaskForm(),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
         ),
-        builder: (context) => AddTaskForm(),
       ),
       icon: const Icon(Icons.add, color: Colors.black),
     );

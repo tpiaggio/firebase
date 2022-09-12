@@ -101,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const ToDoListScreen(),
+          builder: (context) => ToDoListScreen(),
         ),
       );
     } on FirebaseAuthException catch (e) {

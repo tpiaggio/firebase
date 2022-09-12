@@ -27,7 +27,8 @@ class ViewTaskForm extends StatelessWidget {
             _buildAddLabel(),
             _buildNameTextField(),
             _buildDescriptionTextField(),
-            _buildAddButton(context),
+            if (task['image'] != null) _buildTaskImage(),
+            _buildCloseButton(context),
           ],
         ),
       ),
@@ -87,7 +88,14 @@ class ViewTaskForm extends StatelessWidget {
     );
   }
 
-  Widget _buildAddButton(BuildContext context) {
+  Widget _buildTaskImage() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: Image.network(task['image']),
+    );
+  }
+
+  Widget _buildCloseButton(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
       child: ElevatedButton(

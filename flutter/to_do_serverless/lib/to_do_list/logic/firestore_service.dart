@@ -1,6 +1,7 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
+import 'package:to_do_serverless/to_do_list/logic/storage_service.dart';
 
 class FirestoreService {
   static final _firestore = FirebaseFirestore.instance;
@@ -9,6 +10,7 @@ class FirestoreService {
     required String name,
     required String description,
     required String userId,
+    required File? taskImage,
   }) async {
     // await _firestore.collection('tasks').add({
     //   'name': name,
@@ -18,12 +20,18 @@ class FirestoreService {
 
     // OR
     final taskDoc = _firestore.collection('tasks').doc();
+    String? imageUrl;
+    if (taskImage != null) {
+      imageUrl = await StorageService.uploadTaskImage(
+          taskId: taskDoc.id, image: taskImage);
+    }
     return taskDoc.set({
       'id': taskDoc.id,
       'name': name,
       'description': description,
       'created_at': DateTime.now().toIso8601String(),
       'userId': userId,
+      'image': imageUrl,
     });
   }
 
