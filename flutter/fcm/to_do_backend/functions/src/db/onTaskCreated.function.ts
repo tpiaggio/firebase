@@ -15,9 +15,14 @@ export default firestore
         const user = userDoc.data();
 
         const message = {
-            data: {
+            android: {
+                notification: {
+                    channelId: "high_importance_channel",
+                },
+            },
+            notification: {
                 title: "New task",
-                message: `The task ${createTask.name} has been created`,
+                body: `The task ${createTask.name} has been created`,
             },
             token: user?.notificationToken,
         };
