@@ -26,3 +26,19 @@ Lesson that consisted on explaining Firebase Emulator and Firebase Security Rule
 ### react/fcm
 
 Lesson that consisted on explaining Firebase Cloud Messaging.
+
+### flutter/firestore
+
+Lesson that consisted on explaining firebase and the Firestore.
+
+### flutter/auth
+
+Lesson that consisted on explaining Firebase Authentication and App Distribution.
+
+### flutter/storage
+
+Lesson that consisted on explaining Firebase Cloud Storage.
+
+### flutter/functions
+
+Lesson that consisted on explaining Firebase Cloud Functions.
