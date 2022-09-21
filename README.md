@@ -18,3 +18,11 @@ Lesson that consisted on explaining firebase authentication & hosting.
 ### react/storage-functions
 
 Lesson that consisted on explaining Firebase Cloud Functions and Cloud Storage.
+
+### react/security-rules
+
+Lesson that consisted on explaining Firebase Emulator and Firebase Security Rules.
+
+### react/fcm
+
+Lesson that consisted on explaining Firebase Cloud Messaging.
