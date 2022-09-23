@@ -32,19 +32,6 @@ class MessagingService {
     // If you're going to use other Firebase services in the background, such as Firestore,
     // make sure you call `initializeApp` before using other Firebase services.
     await Firebase.initializeApp();
-    // _flutterLocalNotificationsPlugin.show(
-    //     1,
-    //     message.data['title'] ?? 'New notification',
-    //     message.data['message'] ?? 'Check To Do Serverless app',
-    //     NotificationDetails(
-    //       android: AndroidNotificationDetails(
-    //         _channel.id,
-    //         _channel.name,
-    //         channelDescription: _channel.description,
-    //         playSound: true,
-    //         icon: '@mipmap/ic_launcher',
-    //       ),
-    //     ));
   }
 
   static Future<void> getNotificationToken(String userId) async {
@@ -60,8 +47,8 @@ class MessagingService {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       _flutterLocalNotificationsPlugin.show(
           1,
-          message.data['title'] ?? 'New notification',
-          message.data['message'] ?? 'Check To Do Serverless app',
+          message.notification?.title ?? 'New notification',
+          message.notification?.body ?? 'Check To Do Serverless app',
           NotificationDetails(
             android: AndroidNotificationDetails(
               _channel.id,
