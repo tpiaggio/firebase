@@ -42,3 +42,11 @@ Lesson that consisted on explaining Firebase Cloud Storage.
 ### flutter/functions
 
 Lesson that consisted on explaining Firebase Cloud Functions.
+
+### flutter/fcm
+
+Lesson that consisted on explaining Firebase Cloud Messaging.
+
+### flutter/dynamic_links
+
+Lesson that consisted on explaining Firebase Dynamic Links.
