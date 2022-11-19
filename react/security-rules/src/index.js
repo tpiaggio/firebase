@@ -19,19 +19,19 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const auth = firebase.auth();
-auth.useEmulator("http://localhost:9099");
-
-var db = firebase.firestore();
 if (window.location.hostname === "localhost") {
+  const auth = firebase.auth();
+  auth.useEmulator("http://localhost:9099");
+
+  var db = firebase.firestore();
   db.useEmulator("localhost", 8080);
+
+  var storage = firebase.storage();
+  storage.useEmulator("localhost", 9199);
+  
+  var functions = firebase.functions();
+  functions.useEmulator("localhost", 5001);
 }
-
-var storage = firebase.storage();
-storage.useEmulator("localhost", 9199);
-
-var functions = firebase.functions();
-functions.useEmulator("localhost", 5001);
 
 ReactDOM.render(
   <React.StrictMode>

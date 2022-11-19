@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 
 const ENDPOINT = "https://us-central1-time-entries-12b5d.cloudfunctions.net/getWeather";
 
-exports.createTimer = functions.firestore.document('/times/{timesId}').onCreate((snap, context) => {
+exports.createTimer = functions.firestore.document('/times/{timesId}').onCreate(async (snap, context) => {
   const { location } = snap.data();
   const body = JSON.stringify({ location });
   const response = await fetch(ENDPOINT, {method: "POST", body});
